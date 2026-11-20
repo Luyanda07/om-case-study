@@ -32,3 +32,11 @@ override.tf.json
 terraform.rc
 
 answers
+
+
+# Backstage local and generated files
+**/.yarn/cache
+**/.yarn/install-state.gz
+**/dist-types
+**/.env
+**/.env.local

@@ -1,0 +1,34 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: example-nodejs-template
+  title: Example Node.js Template
+  description: An example template that creates a file using a custom action
+
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: File Details
+      required:
+        - filename
+        - content
+      properties:
+        filename:
+          title: Filename
+          type: string
+          description: Name of the file to create
+        content:
+          title: File Content
+          type: string
+          description: Content to write into the file
+          ui:widget: textarea
+
+  steps:
+    - id: create-file
+      name: Create File
+      action: my:custom:action
+      input:
+        filename: ${{ parameters.filename }}
+        content: ${{ parameters.content }}
